@@ -23,7 +23,6 @@ class FuelEntry(postgres.Model):
         self.distanceTravelledBetweenEntry = distanceTravelledBetweenEntry
         self.gasTotal = gasTotal
         self.priceTotal = priceTotal
-        self.mileage = mileage
         self.MPG = MPG
 
 class GymEntry(postgres.Model):
