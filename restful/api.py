@@ -7,6 +7,7 @@ api.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 def index():
     return render_template('index.html')
 
+
 # Import here to avoid circular import
 from restful.entry import list_names, fetch_item_for, new_item
 
