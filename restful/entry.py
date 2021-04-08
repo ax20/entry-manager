@@ -74,6 +74,9 @@ def new_item(EntryType, Selector, JSON):
             endTime = JSON['startTime'],
             caloriesExpended = JSON['caloriesExpended']
         )
+    
+    else:
+        return "422"
 
     txn_create(item)
     
@@ -113,6 +116,9 @@ def fetch_item_for(EntryType, Selector):
                 }
                 reply.append(item)
         
+        else:
+            return "422"
+        
         if len(reply) == 0:
             return f"No data for {Selector} in table {EntryType}"
         
@@ -145,6 +151,9 @@ def list_names(EntryType):
                     names.append(name)
                 else:
                     continue
+
+    else:
+        return "422"
                 
     reply.append(names)
 
