@@ -1,4 +1,4 @@
-/v-env/
+/virtual/
 /.history/
 /restful/__pycache__/
 configuration.py

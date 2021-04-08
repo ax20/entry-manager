@@ -1,5 +1,5 @@
-from configuration import DATABASE_ADDR, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_USERNAME
-from api import api
+from restful.configuration import DATABASE_ADDR, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_USERNAME
+from restful.api import api
 from flask_sqlalchemy import SQLAlchemy
 
 # Database URL

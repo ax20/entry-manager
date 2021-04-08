@@ -1,4 +1,4 @@
-from postgres import postgres, txn_create
+from restful.postgres import postgres, txn_create
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from datetime import datetime
 
