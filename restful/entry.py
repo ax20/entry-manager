@@ -1,7 +1,6 @@
-from restful.postgres import txn_create, postgres
+from restful.postgres import txn_create, postgres, FuelEntry, GymEntry
 from flask import jsonify
 from restful.configuration import ADMIN_TOKEN
-from restful.data_models import FuelEntry, GymEntry
 from datetime import datetime
 import sqlalchemy
 
@@ -80,7 +79,7 @@ def new_item(EntryType, Selector, JSON):
 
     txn_create(item)
     
-    return "Created entry"
+    return "Created entry [" + item.id + "] "
 
 def fetch_item_for(EntryType, Selector):
 
@@ -91,6 +90,7 @@ def fetch_item_for(EntryType, Selector):
 
             for entry in entries:
                 item = {
+                    "id": entry.entry_id,
                     "carName":Selector,
                     "date": entry.date,
                     "mileage": entry.mileage,
@@ -106,6 +106,7 @@ def fetch_item_for(EntryType, Selector):
 
             for entry in entries:
                 item = {
+                    "id": entry.entry_id,
                     "individualName":Selector,
                     "date": entry.date,
                     "bodyPhotoABS": entry.bodyPhotoABS,

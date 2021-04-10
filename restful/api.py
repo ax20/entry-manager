@@ -4,13 +4,12 @@ from restful.configuration import API_LABEL
 api = Flask(__name__)
 api.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
 @api.route(f'/{API_LABEL}')
 def index():
     return render_template('index.html', title=API_LABEL)
 
 # Import here to avoid circular import
-from restful.entry import list_names, fetch_item_for, new_item
+from restful.entry import *
 
 # List all individuals & cars
 @api.route(f'/{API_LABEL}/v1/<EntryType>/all', methods=['GET'])
@@ -29,3 +28,6 @@ def get_data(EntryType, Selector):
 def new_data(EntryType, Selector):
     reply = new_item(EntryType, Selector, request.get_json())
     return reply
+
+if __name__ == '__main__':
+    api.run()
