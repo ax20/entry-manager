@@ -1,4 +1,4 @@
-from restful.postgres import txn_create, postgres
+from restful.postgres import  txn_delete, txn_create, postgres, FuelEntry, GymEntry
 from flask import jsonify
 from restful.configuration import ADMIN_TOKEN
 from restful.data_models import FuelEntry, GymEntry
@@ -10,6 +10,19 @@ def time_dif(h1,m1,h2,m2):
         return m2-m1
     else:
         return ((h2-h1-1)*60 + (60-m1) + m2)
+
+def delete_entry(EntryType, JSON):
+
+    if JSON.get('secret') == None or JSON.get('secret') != ADMIN_TOKEN:
+        return "Unauthorized access"
+
+    if EntryType == "Fuel":
+        item = FuelEntry.query.filter_by(entry_id=JSON['entry_id'])
+    elif EntryType == "Gym":
+        item = GymEntry.query.filter_by(entry_id=JSON['entry_id'])
+    
+    txn_delete(item)
+    return f"Deleted {Id} for {EntryType}"
 
 def new_item(EntryType, Selector, JSON):
 
@@ -80,7 +93,7 @@ def new_item(EntryType, Selector, JSON):
 
     txn_create(item)
     
-    return "Created entry"
+    return "Created entry [" + str(item.entry_id) + "] "
 
 def fetch_item_for(EntryType, Selector):
 

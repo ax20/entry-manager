@@ -27,3 +27,11 @@ def get_data(EntryType, Selector):
 def new_data(EntryType, Selector):
     reply = new_item(EntryType, Selector, request.get_json())
     return reply
+
+@api.route(f'/{API_LABEL}/v1/<EntryType>/', methods=['DELETE'])
+def delete_data(EntryType):
+    reply = delete_entry(EntryType, request.get_json())
+    return reply
+
+if __name__ == '__main__':
+    api.run()
