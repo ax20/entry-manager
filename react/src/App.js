@@ -6,7 +6,7 @@ import { Card, Container, Row, Col } from 'react-bootstrap'
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
-const pageList = [{
+const menuTree = [{
   'name':'Fuel',
   'list':['Matryx', 'two']
 },{
@@ -21,12 +21,12 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
-          {pageList.map((items,index) => (
+          {menuTree.map((items,index) => (
             <Fragment key={index}>
               <Route path= {"/" + items.name} component={Overview} />
             </Fragment>
           ))}  
-          {pageList.map((items,index) => (
+          {menuTree.map((items,index) => (
             <Fragment key={index}>
               {items.list.map((subItems, index)=>(
                 <Fragment key={index}>
@@ -47,7 +47,7 @@ const Home = () => (
     <h1>Home Page</h1>
     <Container>
       <Row>
-      {pageList.map((items,index) => (
+      {menuTree.map((items,index) => (
         <Col key={index}>
           <Link to={"/" + items.name} style={{ textDecoration: 'none' }}>
             <Card border = 'primary'>
