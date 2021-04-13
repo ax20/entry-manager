@@ -24,11 +24,7 @@ function App() {
           <Route path="/" exact component={Home} />
           {menuTree.map((items,index) => (
             <Fragment key={index}>
-              <Route path= {"/" + items.name} exact component={Overview} />
-            </Fragment>
-          ))}  
-          {menuTree.map((items,index) => (
-            <Fragment key={index}>
+              <Route path= {"/" + items.name} component={Overview} />
               {items.list.map((subItems, index)=>(
                 <Fragment key={index}>
                   <Route path= {"/" +items.name+"/"+ subItems} component={DataTable} />
