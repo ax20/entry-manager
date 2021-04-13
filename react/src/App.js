@@ -24,10 +24,10 @@ function App() {
           <Route path="/" exact component={Home} />
           {menuTree.map((items,index) => (
             <Fragment key={index}>
-              <Route path= {"/" + items.name} component={Overview} />
+              <Route path= {"/" + items.name} exact component={Overview} />
               {items.list.map((subItems, index)=>(
                 <Fragment key={index}>
-                  <Route path= {"/" +items.name+"/"+ subItems} component={DataTable} />
+                  <Route path= {"/" +items.name+"/"+ subItems} exact component={DataTable} />
                 </Fragment>
               ))}
             </Fragment>
