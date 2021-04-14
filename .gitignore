@@ -1,5 +1,5 @@
-virtual/
+/v_enviornment/
 .history/
-.vscode/*
+.vscode/
 /__pycache__/
-configuration.py
+config.py
