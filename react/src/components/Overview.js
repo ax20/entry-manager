@@ -1,7 +1,7 @@
 import { useLocation, Link } from 'react-router-dom'
 import { Card, Container, Row, Col } from 'react-bootstrap' 
 import { menuTree } from '../App'
-const Overview = () => {
+function Overview() {
     const pathList = useLocation().pathname.split('/').filter(Boolean)
     const submenu = menuTree.filter(menu => menu.name === pathList[0])[0];
     return (

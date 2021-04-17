@@ -1,11 +1,12 @@
-//import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
 import { Table } from 'react-bootstrap'
 import axios from 'axios'
 
-const DataTable= () => {
-    //const path = 'https://cors-anywhere.herokuapp.com/https://api.ashwin.lol/damocles/v1' + useLocation().pathname
-    const path = 'https://jsonplaceholder.typicode.com/posts/'
+function DataTable() {
+    //const path = 'https://api.ashwin.lol/damocles/v1' + useLocation().pathname
+    //const path = 'https://jsonplaceholder.typicode.com/posts/'
+    const path = 'http://localhost:4000' + useLocation().pathname
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
     const [info, setInfo] = useState([])
@@ -30,20 +31,24 @@ const DataTable= () => {
         <Table striped bordered hover>
             <thead>
             <tr>
-                <th>UserId</th>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Body</th>
+                <th>#</th>
+                <th>Car Name</th>
+                <th>MPG</th>
+                <th>Distance</th>
+                <th>Mileage</th>
+                <th>Gas Total</th>
             </tr>
             </thead>
             <tbody>
                 {loading ? null: info.map(item=>(
-                        <tr key={item.id}>
-                            <td>{item.userId}</td>
-                            <td>{item.id}</td>
-                            <td>{item.title}</td>
-                            <td>{item.body}</td>
-                        </tr>
+                    <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.carName}</td>
+                        <td>{item.mpg}</td>
+                        <td>{item.distance}</td>
+                        <td>{item.mileage}</td>
+                        <td>{item.gasTotal}</td>
+                    </tr>
                 ))}
                 {error ? error : null}
             </tbody>
