@@ -36,12 +36,12 @@ def handle_data(Model, Name):
 
 @API.route(api['location'] + "<Model>/list", methods=['GET'])
 def list_model_names(Model):
-    list_names(Model)
+    return list_names(Model)
 
 @API.route(api['location'] + "upload", methods=['POST'])
 def upload_image():
     
-    UPLOAD_FOLDER = 'static/media/'
+    UPLOAD_FOLDER = 'static/media/pictures'
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
     if 'file' not in request.files:
         print('No file part')
@@ -56,5 +56,6 @@ def upload_image():
            file.save(os.path.join(UPLOAD_FOLDER, filename))
            path = os.path.dirname(os.path.abspath(__file__)).replace(chr(92), chr(47)) + chr( 47) + os.path.join(UPLOAD_FOLDER, filename)
            return path
-            
-    return """<h1>Upload new File</h1><form enctype=multipart/form-data method=post><input type="file" name="file"> <input type=submit></form>"""
+    
+    return "Could not upload file"
+    # return """<h1>Upload new File</h1><form enctype=multipart/form-data method=post><input type="file" name="file"> <input type=submit></form>"""

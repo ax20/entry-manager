@@ -1,4 +1,5 @@
 from flask import jsonify
+import json
 from config import api
 from  datetime import  datetime
 from database import FuelEntry, GymEntry, DB, create_txn, delete_txn
@@ -116,44 +117,49 @@ def data_new(Model, Name, json):
     return "Created " + Model + " => " + item.entry_id
 
 def list_names(Model):
-    reply = []
+    reply = {
+        "fuel": {},
+        "gym": {}
+    }
+    gym_names = []
+    fuel_names = []
 
     if Model == "Fuel":
         data = FuelEntry.query.all()
-        names = {}
         
         if len(data) > 1:
             for entry in data:
                 name = entry.carName
-                if name in names:
-                    names.append(name)
+                if name not in fuel_names:
+                    fuel_names.append(name)
                 else:
                     continue
 
     elif Model == "Gym":
         data = GymEntry.query.all()
-        names = {}
         
         if len(data) > 1:
             for entry in data:
                 name = entry.individualName
-                if name not in names:
-                    names.append(name)
+                if name not in gym_names:
+                    gym_names.append(name)
                 else:
                     continue
-
     else:
         return "422"
                 
-    reply.append(names)
+    reply['fuel'] = fuel_names
+    reply['gym'] = gym_names
 
     if len(reply) == 0:
         return "204"
 
     return jsonify(reply)
 
+# TODO: Next commit
 def data_update(Model, Name, json):
     return ""
 
+# TODO: Next commit
 def data_delete(Model, Name, json):
     return ""
