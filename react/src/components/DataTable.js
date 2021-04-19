@@ -4,9 +4,9 @@ import { Table } from 'react-bootstrap'
 import axios from 'axios'
 
 function DataTable() {
-    //const path = 'https://api.ashwin.lol/damocles/v1' + useLocation().pathname
+    const path = 'https://api.ashwin.lol/damocles/v1' + useLocation().pathname
     //const path = 'https://jsonplaceholder.typicode.com/posts/'
-    const path = 'http://localhost:4000' + useLocation().pathname
+    //const path = 'http://localhost:4000' + useLocation().pathname
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
     const [info, setInfo] = useState([])
