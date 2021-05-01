@@ -1,5 +1,3 @@
-/v_enviornment/
 .history/
 .vscode/
 /__pycache__/
-config.py
