@@ -1,18 +1,18 @@
-# **Entry Manager**
- A web app that tracks and manages data, for example managing fuel efficency and tracking the estimated amount of calories burned in a month by calculating the time spent at the gym.
+# Entry Manager
+A collabration project with [David Liang](https://github.com/davidliang2019) in developing a fullstack website with a backend via Flask and a frontend via ReactJS. The project focuses around tracking data related to a vehicle such as MPG and tracking the average amount of calories expended each week by tracking the time at which you go to the gym.
 
-# Project Goal
-> *Understanding RESTful API's and expanding knowledge with Flask and ReactJS to improve my full stack development skills.* 
+## 1 Installation
+ - Ensure Python 3.9.4+ & the latest version of PostgresSQL is installed on the machine/virtual environment.
+ - Install all required libraries by running `pip install -r requirements.txt`
+ - Create a database with PostgresSQL and create a configuration file using [configuration guide](#configuration) and save the file in the working directory.
+ - Generate the database models by running [generate_models.py](flask/generate_models.py)
+ - Define the following enviornment variables:
+   - *FLASK_ENV* by running `export FLASK_ENV=production`
+   - *FLASK_APP* by running `export FLASK_APP=flask.app`
+ - Start the Flask server by running `flask run`
 
- ## Technologies
- - [Flask](https://flask.palletsprojects.com/en/1.1.x/) (*Flask is known for it's speed and ease of scalability, as well as it's easy to use rendering methods. I have been studying Python for a long time as well so this was the perfect oppurtunity to put my skills to the test.*)
- - [ReactJS](https://reactjs.org/) (*Very popular in the frontend community, I have seen ReactJS mentioned everywhere and I knew I had to learn it at somepoint, so why not with a bigger project that has real world uses.*)
-- [PostgresSQL](https://www.postgresql.org/) (*A newer SQL database system that is recently been gaining popularity, the UI is much cleaner and interactive with the system is easier than MySQL so I decided to go with it. The icon also looks cool*)
+## 1.1 Configuration
+In order to start working with the flask API you must first create and configure the settings.py file using [the template](.sample/settings_template.py). Fill in all the required fields with the valid data to start working.
 
-## Skills
-- Full-Stack Development
-- Building RESTful API's
-- Database Management
-- Structual Project Design
-- Github Projects
-- Node.js
+## 1.2 API Documentation
+Detailed documentation for the Flask REST API can be found in the [Flask API Documentation](API_DOCS.md).

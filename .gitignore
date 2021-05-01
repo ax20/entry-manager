@@ -1,4 +1,6 @@
-/virtual/
-/.history/
-/restful/__pycache__/
-configuration.py
+# virtual enviornment
+/virtual/*
+
+# visual studio extension for backups
+/.history/*
+/settings.py
