@@ -12,6 +12,8 @@ RUN pip3 install -r /flask_app/requirements.txt
 
 COPY ./flask /flask_app/
 
+RUN /flask_app/genereate_models.py
+
 ENTRYPOINT [ "python3" ]
 
 RUN export FLASK_APP=flask_app.app
