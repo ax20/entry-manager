@@ -1,7 +1,8 @@
 from flask import request, jsonify
 import json
 from extensions import app
-from database import Entry, create_txn
+from database import Entry, create_txn, db
+import traceback # for debugging
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -35,3 +36,29 @@ def read_entries(Name):
         result.append(x)
     
     return jsonify(result)
+    
+@app.route("/update/<int:Id>", methods=["PUT"])
+def update_entry(Id):
+    body = request.get_json()
+
+    try:
+        entry = Entry.query.filter(Entry.id == Id).first()
+        entry.name = body['name']
+        entry.description = body['description']
+        db.session.flush()
+        db.session.commit()
+        
+        return "Updated Entry #" + str(Id)
+    except:
+        return "Could not update values for Entry #" + str(Id)
+
+@app.route("/delete/<int:Id>", methods=["DELETE"])
+def delete_entry(Id):
+
+    try:
+        Entry.query.filter_by(id=Id).delete()
+        db.session.commit()
+        return "Deleted Entry #" + str(Id)
+
+    except:
+        return "Could not delete Entry #" + str(Id)
