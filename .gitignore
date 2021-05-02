@@ -1,4 +1,10 @@
+# vscode extension exclusion
 .history/
 .vscode/*
+
+# project exclusion
+flask/settings.py 
+
+# virtual env exclusion
 flask/__pycache__/
 /virtual*
