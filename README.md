@@ -2,6 +2,7 @@
 A collabration project with [David Liang](https://github.com/davidliang2019) in developing a fullstack website with a backend via Flask and a frontend via ReactJS. The project focuses around tracking data related to a vehicle such as MPG and tracking the average amount of calories expended each week by tracking the time at which you go to the gym.
 
 ## 1 Installation
+### Manual
  - Ensure Python 3.9.4+ & the latest version of PostgresSQL is installed on the machine/virtual environment.
  - Install all required libraries by running `pip install -r requirements.txt`
  - Create a database with PostgresSQL and create a configuration file using [configuration guide](#configuration) and save the file in the working directory.
@@ -11,6 +12,10 @@ A collabration project with [David Liang](https://github.com/davidliang2019) in 
    - *FLASK_APP* by running `export FLASK_APP=flask.app`
  - Start the Flask server by running `flask run`
 
+### Docker
+- Ensure the latest version of PostgresSQL is installed on the machine/virtual environment.
+- Build the container by running `docker build -t flask_restful .`
+- Run the container by running `docker run -p 5000:5000 flask_restful`
 ## 1.1 Configuration
 In order to start working with the flask API you must first create and configure the settings.py file using [the template](.sample/settings_template.py). Fill in all the required fields with the valid data to start working.
 
