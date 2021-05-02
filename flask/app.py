@@ -62,3 +62,6 @@ def delete_entry(Id):
 
     except:
         return "Could not delete Entry #" + str(Id)
+
+if __name__ == "__main__":
+    app.run()
