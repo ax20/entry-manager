@@ -1,11 +1,5 @@
 import os
 
-# debug mode
-if os.environ['FLASK_ENV'] == "production":
-    DEBUG = False
-else:
-    DEBUG = True
-
 APP_NAME = "damocles" # using lowercase is a better practice
 APP_VERSION = "1" # round to whole number for better url formatting
 
