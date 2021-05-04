@@ -15,7 +15,7 @@ class Entry(db.Model):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     car_name = Column(String, nullable=False)
-    car_mileage = Column(String, nullable=False)
+    car_mileage = Column(Integer, nullable=False)
     distance_between_entry = Column(Integer, nullable=False)
     txn_date = Column(DateTime, default=datetime.utcnow)
     txn_total = Column(Float, nullable=False)

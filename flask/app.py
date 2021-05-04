@@ -5,7 +5,7 @@ from extensions import app
 from database import Entry, create_txn, db
 import traceback # debug
 from settings import IMAGE_FOLDER, IMAGE_EXTENSIONS
-from handle import process_new
+from handle import process_new, process_query, process_update, process_delete, process_list
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -19,71 +19,27 @@ def index():
 @app.route("/create/<string:Name>", methods=["POST"])
 def create_entry(Name):
     response = process_new(Name, request.get_json())
-    return response
+    return jsonify(response)
 
 @app.route("/view/<string:Name>", methods=["GET"])
 def read_entries(Name):
-    result = []
-    entries = Entry.query.filter_by(name=Name).all()
-
-    for entry in entries:
-        x = {
-            "id": entry.id,
-            "name": entry.name,
-            "description": entry.description
-        }
-        result.append(x)
-    
-    return jsonify(result)
+    response = process_query(Name)
+    return jsonify(response)
     
 @app.route("/update/<int:Id>", methods=["PUT"])
 def update_entry(Id):
-    body = request.get_json()
+    response = process_update(Id, request.get_json())
+    return jsonify(response)
 
-    try:
-        entry = Entry.query.filter(Entry.id == Id).first()
-        entry.name = body['name']
-        entry.description = body['description']
-        db.session.flush()
-        db.session.commit()
-        
-        return "Updated Entry #" + str(Id)
-    except:
-        return "Could not update values for Entry #" + str(Id)
-    
-    return "error 422"
-
-@app.route("/delete/<int:Id>", methods=["DELETE"])
-def delete_entry(Id):
-
-    try:
-        Entry.query.filter_by(id=Id).delete()
-        db.session.commit()
-        return "Deleted Entry #" + str(Id)
-
-    except:
-        return "Could not delete Entry #" + str(Id)
-    
-    return "error 422"
+@app.route("/delete/<int:Id>/<string:Reason>", methods=["DELETE"])
+def delete_entry(Id, Reason):
+    response = process_delete(Id, Reason)
+    return jsonify(response)
 
 @app.route("/list/", methods=["GET"])
 def list_names():
-
-    names = []
-    query = Entry.query.all()
-    if len(query) > 0:
-        for entry in query:
-            name = entry.name
-            
-            if name not in names:
-                names.append(name)
-            else:
-                continue
-        return jsonify(names)
-    else:
-        return "No data found"
-    
-    return "error 422"
+    response = process_list()
+    return jsonify(response)
 
 @app.route("/upload/", methods=['POST', 'GET'])
 def upload_image():
