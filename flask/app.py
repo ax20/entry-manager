@@ -3,8 +3,9 @@ import json, os.path, random, string, hashlib
 from werkzeug.utils import secure_filename
 from extensions import app
 from database import Entry, create_txn, db
-import traceback # for debugging
+import traceback # debug
 from settings import IMAGE_FOLDER, IMAGE_EXTENSIONS
+from handle import process_new
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -17,14 +18,8 @@ def index():
 
 @app.route("/create/<string:Name>", methods=["POST"])
 def create_entry(Name):
-    body = request.get_json()
-    entry = Entry(
-        name=Name,
-        description=body['description']
-    )
-    create_txn(entry)
-    
-    return "Created Entry #" + str(entry.id)
+    response = process_new(Name, request.get_json())
+    return response
 
 @app.route("/view/<string:Name>", methods=["GET"])
 def read_entries(Name):

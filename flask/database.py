@@ -2,6 +2,7 @@ from extensions import app, SQLAlchemy
 from datetime import datetime
 from sqlalchemy import String, Integer, Column, Float, DateTime
 from settings import DATABASE
+import traceback # debug
 
 database_url = f"postgresql://{DATABASE['username']}:{DATABASE['password']}@{DATABASE['ip']}/{DATABASE['name']}"
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
@@ -35,4 +36,5 @@ def create_txn(model):
         db.session.add(model)
         db.session.commit()
     except:
+        traceback.print_exc() # debug
         print("fatal: unable to create model")
