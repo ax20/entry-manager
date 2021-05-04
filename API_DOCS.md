@@ -13,9 +13,14 @@ Method:  `POST`
 },
 ...
 ```
+
 *NOTE: auth_token is the token from your settings file*
-<br>
-Example `GET` response from `/view/Car1`
+
+---
+Method:  `GET`
+<br>Type: JSON
+<br>Expected Respone Code: 200
+<br>Example `GET` response from `/view/Car1`
 ```
 {
   "car_mileage": "78199",
@@ -39,4 +44,33 @@ Method:  `GET`
   "Car1",
   "Car2"
 ]
+```
+---
+Method:  `PUT`
+<br>Type: JSON
+<br>Expected Respone Code: 200
+<br>Example request body from `/update/1`
+```
+{
+  "id": 1,
+  "car_name": "Car1",
+  "car_mileage": "71499",
+  "distance_between_entry": 30,
+  "txn_total": 60.11,
+  "txn_gas_total": 50.01,
+  "txn_mpg": 11.11
+}
+```
+Expected response from `/update/1`
+```
+Updated Entry #1
+```
+---
+Method:  `DELETE`
+<br>Type: JSON
+<br>Expected Respone Code: 200
+Example response from `/delete/1/invalid_entry`
+```
+Deleted Entry #1
+Reason: invalid_entry
 ```
