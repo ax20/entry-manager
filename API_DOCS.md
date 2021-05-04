@@ -36,7 +36,7 @@ Method:  `GET`
 <br>Example response from `/list/`
 ```
 [
-  "Niggas",
-  "Allahu"
+  "Car1",
+  "Car2"
 ]
 ```
