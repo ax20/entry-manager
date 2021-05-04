@@ -4,10 +4,11 @@ from werkzeug.utils import secure_filename
 from extensions import app
 from database import Entry, create_txn, db
 import traceback # debug
-from settings import IMAGE_FOLDER, IMAGE_EXTENSIONS
+from settings import IMAGE_FOLDER, IMAGE_EXTENSIONS, CORS_WHITELISTED
 from handle import process_new, process_query, process_update, process_delete, process_list
 
 @app.route("/", methods=["GET", "POST"])
+@cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
 def index():
     if request.method == "POST":
         return "POST Request"
@@ -19,27 +20,37 @@ def index():
 @app.route("/create/<string:Name>", methods=["POST"])
 def create_entry(Name):
     response = process_new(Name, request.get_json())
-    return jsonify(response)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', CORS_WHITELISTED)
+    return response
 
 @app.route("/view/<string:Name>", methods=["GET"])
 def read_entries(Name):
     response = process_query(Name)
-    return jsonify(response)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', CORS_WHITELISTED)
+    return response
     
 @app.route("/update/<int:Id>", methods=["PUT"])
 def update_entry(Id):
     response = process_update(Id, request.get_json())
-    return jsonify(response)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', CORS_WHITELISTED)
+    return response
 
 @app.route("/delete/<int:Id>/<string:Reason>", methods=["DELETE"])
 def delete_entry(Id, Reason):
     response = process_delete(Id, Reason)
-    return jsonify(response)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', CORS_WHITELISTED)
+    return response
 
 @app.route("/list/", methods=["GET"])
 def list_names():
     response = process_list()
-    return jsonify(response)
+    response = jsonify(response)
+    response.headers.add('Access-Control-Allow-Origin', CORS_WHITELISTED)
+    return response
 
 @app.route("/upload/", methods=['POST', 'GET'])
 def upload_image():
