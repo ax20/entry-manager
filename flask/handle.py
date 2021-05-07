@@ -3,8 +3,7 @@ from database import Entry, create_txn, db
 import datetime
 import traceback # for debug
 
-def get_date(txn_date):
-    
+def get_date(txn_date):    
     if txn_date != "" and txn_date != "null":
         delta = datetime.datetime.utcnow()-datetime.datetime.now()
         j = txn_date.split('/')
@@ -19,16 +18,15 @@ def calculate_distance_travelled(mileage, car_name):
         return (int(mileage) - int(mileage_ltst))
     return 0
 
-def calcualte_mpg(distance_between_entry, txn_gas_total):
+def calculate_mpg(distance_between_entry, txn_gas_total):
     if distance_between_entry != 0:
         return round((distance_between_entry/txn_gas_total), 2)
     return 0
 
 def process_new(car_name, json_body):
-    
     date = get_date(json_body['txn_date'])
     distance_between_entry = calculate_distance_travelled(json_body['car_mileage'], car_name)
-    txn_mpg = calcualte_mpg(distance_between_entry, json_body['txn_gas_total'])
+    txn_mpg = calculate_mpg(distance_between_entry, json_body['txn_gas_total'])
 
     entry = Entry(
         car_name = car_name,
@@ -41,7 +39,6 @@ def process_new(car_name, json_body):
     )
 
     create_txn(entry)
-
     return "Created Entry #" + str(entry.id)
 
 def process_query(car_name):
@@ -66,7 +63,6 @@ def process_query(car_name):
     return response
 
 def process_update(id, json_body):
-    
     try:
         entry = Entry.query.filter(Entry.id == id).first()
         entry.car_name = json_body['car_name']
@@ -80,7 +76,7 @@ def process_update(id, json_body):
         
         return "Updated Entry #" + str(id)
     except:
-        traceback.print_exc()
+        traceback.print_exc() # for debug
         return "Could not update values for Entry #" + str(id)
 
 # TODO Add logging reason as to why delete query was called
