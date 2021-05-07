@@ -3,8 +3,6 @@ import {Table} from 'react-bootstrap'
 import {ControlContext} from '../App'
 function OutputTable() {
     const controller = useContext(ControlContext)
-/*     controller.doFetch('http://localhost:5000/view/Nissan')
-    console.log(controller) */
     return (
       <div className='container'>
         <Table striped bordered hover variant="dark">
