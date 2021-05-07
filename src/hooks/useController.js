@@ -1,29 +1,12 @@
-import {useState, useEffect} from 'react'
+import { useState } from 'react'
 import axios from 'axios'
-function useAppController(url,carname,mileage,total,gastotal){
+import useDataApi from './useDataApi'
+function useController(url,carname,mileage,total,gastotal){
     const [show, setShow] = useState(false)
-    const [data, setData] = useState([])
+    const [{ data, isLoading, isError }, doFetch] = useDataApi(url,[])
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
-
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          //setIsLoading(true)
-          const result = await axios(`${url}/view/Nissan`)
-          console.log(result.data)
-          setData(result.data)
-          //setIsLoading(false)
-        } catch (error) {
-          console.warn(error)
-        }
-      }
-      fetchData()
-      //const interval = setInterval(fetchData, 1000)
-      //return clearInterval(interval)
-      // eslint-disable-next-line
-    }, [url])
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -49,16 +32,23 @@ function useAppController(url,carname,mileage,total,gastotal){
         setShow(false)
     }
     return {
-        carname,
-        mileage,
-        total,
-        gastotal,
         data,
-        show,
-        handleShow, 
-        handleClose, 
-        handleSubmit
+        isLoading, 
+        isError, 
+        doFetch,
+        form: {
+          carname,
+          mileage,
+          total,
+          gastotal,
+          handleSubmit,
+        },
+        modal:{
+          show,
+          handleShow, 
+          handleClose
+        },
     }
 }
 
-export default useAppController
+export default useController

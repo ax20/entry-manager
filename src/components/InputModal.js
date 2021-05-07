@@ -5,8 +5,8 @@ import {ControlContext} from '../App'
 function InputModal() {
     const controller = useContext(ControlContext)
     return (
-        <Modal show={controller.show} onHide={controller.handleClose} >
-            <Form onSubmit={controller.handleSubmit}>
+        <Modal show={controller.modal.show} onHide={controller.modal.handleClose} >
+            <Form onSubmit={controller.form.handleSubmit}>
                 <Modal.Header closeButton>
                     <h3 className="text-primary">New Record</h3>
                 </Modal.Header>
@@ -15,31 +15,31 @@ function InputModal() {
                     <Form.Control
                     placeholder="Nissan"
                     type="text"
-                    value={controller.carname.value}
-                    onChange={controller.carname.handleChange}
+                    value={controller.form.carname.value}
+                    onChange={controller.form.carname.handleChange}
                     />
                     <Form.Label>Mileage</Form.Label>
                     <Form.Control
                     placeholder="10000"
                     type="number"
-                    value={controller.mileage.value}
-                    onChange={controller.mileage.handleChange}
+                    value={controller.form.mileage.value}
+                    onChange={controller.form.mileage.handleChange}
                     />
                     <Form.Label>Total</Form.Label>
                     <Form.Control
                     placeholder="1000.0"
                     type="number"
                     step="any"
-                    value={controller.total.value}
-                    onChange={controller.total.handleChange}
+                    value={controller.form.total.value}
+                    onChange={controller.form.total.handleChange}
                     />
                     <Form.Label>Gas Total</Form.Label>
                     <Form.Control
                     placeholder="1000.0"
                     type="number"
                     step="any"
-                    value={controller.gastotal.value}
-                    onChange={controller.gastotal.handleChange}
+                    value={controller.form.gastotal.value}
+                    onChange={controller.form.gastotal.handleChange}
                     />
                 </Modal.Body>
                 <Modal.Footer>
