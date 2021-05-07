@@ -1,6 +1,7 @@
 import { Fragment, useContext } from 'react'
 import { Navbar, Button } from 'react-bootstrap'
 import InputModal from './InputModal'
+import OutputList from './OutputList'
 import {ControlContext} from '../App'
 function Home() {
     const controller = useContext(ControlContext)
@@ -12,6 +13,7 @@ function Home() {
                 </Button>
             </Navbar>
             <InputModal/>
+            <OutputList/>
         </Fragment>
     )
 }
