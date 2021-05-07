@@ -1,13 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
-import useDataApi from './useDataApi'
+
 function useController(url,carname,mileage,total,gastotal){
     const [show, setShow] = useState(false)
-    const [{ data, isLoading, isError }, doFetch] = useDataApi(url,[])
+    const [data, setData] = useState([])
 
     const handleShow = () => setShow(true)
     const handleClose = () => setShow(false)
-
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+            const result = await axios(`${url}/view/Nissan`)
+            setData(result.data)
+          } catch (error) {
+            console.log(error)
+          }
+      }
+      fetchData()
+      //const interval = setInterval(fetchData, 1000)
+      //return clearInterval(interval)
+    }, [url])
     function handleSubmit(e) {
         e.preventDefault()
         axios.post(`${url}/create/${carname.value}`, {
@@ -33,9 +45,6 @@ function useController(url,carname,mileage,total,gastotal){
     }
     return {
         data,
-        isLoading, 
-        isError, 
-        doFetch,
         form: {
           carname,
           mileage,

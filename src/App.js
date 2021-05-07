@@ -8,12 +8,12 @@ import useFormInput from './hooks/useFormInput'
 export const ControlContext = React.createContext()
 
 function App() {
+  const url = 'http://localhost:5000'
   const carname = useFormInput('Nissan')
   const mileage = useFormInput(10000)
   const total = useFormInput(1000.0)
   const gastotal = useFormInput(1000.0)
-  const controller = useController('http://localhost:5000/view/Nissan'
-    ,carname,mileage,total,gastotal)
+  const controller = useController(url,carname,mileage,total,gastotal)
   return (
     <ControlContext.Provider value = {controller}>
       <BrowserRouter>
