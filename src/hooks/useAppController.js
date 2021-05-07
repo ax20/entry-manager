@@ -17,11 +17,13 @@ function useAppController(url,carname,mileage,total,gastotal){
           txn_gas_total: gastotal.value 
         }).then(function (response) {
           console.log(response)
-/*           setData(data.concat({
+/*          setData(data.concat({
             id: response.data.id,
-            name: name.value,
-            model: model.value,
-            doors: doors.value
+            car_name: carname.value,
+            car_mileage: mileage.value,
+            txn_date: Date.now(),
+            txn_total: total.value,
+            txn_gas_total: gastotal.value 
           })) */
         }).catch(function (error) {
           console.warn(error)
