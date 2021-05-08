@@ -22,8 +22,14 @@ function useController(url){
   const [index, setIndex] = useState(-1)
   const [isUpdate, setIsUpdate] = useState(false)
 
-  const handleShow = () => setShow(true)
-  const handleClose = () => setShow(false)
+  function handleShow () {
+    setShow(true)
+    setIsUpdate(false)
+  } 
+  function handleClose() {
+    setShow(false)
+    setIsUpdate(false)
+  }
   useEffect(() => {
     const fetchData = async () => {
         try {
