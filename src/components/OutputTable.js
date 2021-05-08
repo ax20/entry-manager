@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import {Table} from 'react-bootstrap'
-import {ControlContext} from '../App'
+import { Table,Button } from 'react-bootstrap'
+import { ControlContext } from '../App'
 function OutputTable() {
     const controller = useContext(ControlContext)
     return (
@@ -16,6 +16,8 @@ function OutputTable() {
               <th>Txn Gas Total</th>
               <th>Txn mpg</th>
               <th>Txn Total</th>
+              <th>Delete</th>
+              <th>Update</th>
             </tr>
           </thead>
           <tbody>
@@ -29,6 +31,8 @@ function OutputTable() {
               <td>{item.txn_gas_total}</td>
               <td>{item.txn_mpg}</td>
               <td>{item.txn_total}</td>
+              <td><Button variant="danger" data-key={item.id} onClick={controller.handleDelete}>Delete</Button></td>
+              <td><Button variant="success" data-key={item.id} onClick={controller.handleUpdate}>Update</Button></td>
             </tr>
           ))} 
           </tbody>

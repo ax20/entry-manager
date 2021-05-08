@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react'
+import { useContext } from 'react'
 import { Navbar, Button } from 'react-bootstrap'
 import InputModal from './InputModal'
 import OutputTable from './OutputTable'
@@ -7,7 +7,7 @@ import { ControlContext } from '../App'
 function Home() {
     const controller = useContext(ControlContext)
     return(
-        <Fragment>
+        <div className='container'>
             <Navbar className="bg-light justify-content-between">
                 <Button variant="primary" onClick={controller.modal.handleShow}>
                     Create Record
@@ -15,7 +15,7 @@ function Home() {
             </Navbar>
             <InputModal/>
             <OutputTable/>
-        </Fragment>
+        </div>
     )
 }
 

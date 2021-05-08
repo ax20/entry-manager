@@ -5,10 +5,16 @@ import {ControlContext} from '../App'
 function InputModal() {
     const controller = useContext(ControlContext)
     return (
-        <Modal show={controller.modal.show} onHide={controller.modal.handleClose} >
-            <Form onSubmit={controller.form.handleSubmit}>
+        <Modal show={controller.modal.show} onHide={controller.modal.handleClose} animation={false}>
+            <Form onSubmit={
+                controller.isUpdate?
+                controller.handleUpdateSubmit:
+                controller.form.handleSubmit
+                }>
                 <Modal.Header closeButton>
-                    <h3 className="text-primary">New Record</h3>
+                    <h3 className="text-primary">
+                    {controller.isUpdate?('Update Record'):('New Record')}    
+                    </h3>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Label>Car Name</Form.Label>
