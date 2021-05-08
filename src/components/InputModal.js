@@ -49,7 +49,9 @@ function InputModal() {
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button type="submit">Save</Button>
+                    <Button type="submit">
+                    {controller.isUpdate?'Update':'Create'}
+                    </Button>
                 </Modal.Footer>
             </Form>
         </Modal>
