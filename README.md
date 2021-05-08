@@ -17,7 +17,7 @@ A collabration project with [David Liang](https://github.com/davidliang2019) in 
 - Build the container by running `docker build -t flask_restful .`
 - Run the container by running `docker run -p 5000:5000 flask_restful`
 ## 1.1 Configuration
-In order to start working with the flask API you must first create and configure the settings.py file using [the template](.sample/settings_template.py). Fill in all the required fields with the valid data to start working.
+In order to start working with the flask API you must first create and configure the settings.py file using [the template](.sample/settings.py). Fill in all the required fields with the valid data to start working.
 
 ## 1.2 API Documentation
 Detailed documentation for the Flask REST API can be found in the [Flask API Documentation](API_DOCS.md).
