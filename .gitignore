@@ -1,6 +1,10 @@
-# virtual enviornment
-/virtual/*
+# vscode extension exclusion
+.history/
+.vscode/*
 
-# visual studio extension for backups
-/.history/*
-/settings.py
+# project exclusion
+flask/settings.py 
+
+# virtual env exclusion
+flask/__pycache__/
+/virtual*
