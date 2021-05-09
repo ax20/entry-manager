@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vscode extension exclusion
 .history/
 .vscode/*
@@ -8,3 +9,11 @@ flask/settings.py
 # virtual env exclusion
 flask/__pycache__/
 /virtual*
+=======
+# virtual enviornment
+/virtual/*
+
+# visual studio extension for backups
+/.history/*
+/settings.py
+>>>>>>> main
