@@ -20,8 +20,8 @@ A collabration project with [David Liang](https://github.com/davidliang2019) in 
 ### Manual (React)
 - Install all dependencies by running `npm install`
 - Run the server:
-  Production Mode: `npm run build`, the app is built into the fodler 'build', see the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-  Development Mode: `npm start` starts development server on [http://localhost:3000](http://localhost:3000) 
+   - *Production Mode*: `npm run build`, the app is built into the fodler 'build', see the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - *Development Mode*: `npm start` starts development server on [http://localhost:3000](http://localhost:3000) 
 ## 1.1 Configuration
 In order to start working with the flask API you must first create and configure the settings.py file using [the template](.sample/settings.py). Fill in all the required fields with the valid data to start working.
 
