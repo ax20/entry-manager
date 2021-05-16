@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+/virtual
 /.history/
 /.virtual
 
@@ -25,3 +26,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 package-lock.json
+
+# vscode extension exclusion
+.history/
+.vscode/*
+
+# project exclusion
+flask/settings.py 
+
+# virtual env exclusion
+flask/__pycache__/
+/virtual*
