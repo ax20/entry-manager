@@ -1,17 +1,19 @@
 import { useContext } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
-import "react-datepicker/dist/react-datepicker.css"
 import {ControlContext} from '../App'
 function InputModal() {
     const controller = useContext(ControlContext)
     return (
-        <Modal show={controller.modal.show} onHide={controller.modal.handleClose} animation={false}>
+        <Modal 
+        show={controller.modal.show} 
+        onHide={controller.modal.handleClose} 
+        animation={false}>
             <Form onSubmit={
                 controller.isUpdate?
                 controller.handleUpdateSubmit:
                 controller.form.handleSubmit
                 }>
-                <Modal.Header closeButton>
+                <Modal.Header>
                     <h3 className="text-primary">
                     {controller.isUpdate?('Update Record'):('New Record')}    
                     </h3>

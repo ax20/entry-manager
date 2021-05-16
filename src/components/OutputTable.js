@@ -1,10 +1,14 @@
 import { useContext } from 'react'
+import { Redirect, useLocation } from 'react-router-dom'
 import { Table,Button } from 'react-bootstrap'
 import { ControlContext } from '../App'
 function OutputTable() {
     const controller = useContext(ControlContext)
+    const path = useLocation().pathname
+    const matchNumber = controller.data.filter(v => ('/' + v.car_name === path)).length
+    if(matchNumber!==0)
     return (
-      <div className='container'>
+      <div>
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
@@ -21,7 +25,8 @@ function OutputTable() {
             </tr>
           </thead>
           <tbody>
-          {controller.data.map((item,index) => (
+          {controller.data.map((item,index) => 
+            path === '/' + item.car_name ? (
             <tr key={index} style={{ width: '60rem' }}>
               <td>{item.id}</td>
               <td>{item.car_name}</td>
@@ -34,11 +39,12 @@ function OutputTable() {
               <td><Button variant="danger" data-key={item.id} onClick={controller.handleDelete}>Delete</Button></td>
               <td><Button variant="success" data-key={item.id} onClick={controller.handleUpdate}>Update</Button></td>
             </tr>
-          ))} 
+          ):null)} 
           </tbody>
         </Table>
       </div>
     )
+    else return <Redirect to='/'/>
   }
 
   export default OutputTable
