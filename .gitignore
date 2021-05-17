@@ -8,5 +8,3 @@ flask/settings.py
 # virtual env exclusion
 flask/__pycache__/
 /virtual*
-react/node_modules/
-react/package-lock.json
