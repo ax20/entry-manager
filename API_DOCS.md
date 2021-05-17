@@ -1,6 +1,5 @@
 # Flask RESTful API
 
-<<<<<<< HEAD
 Method:  `POST`
 <br>Type: JSON
 <br>Expected Respone Code: 200
