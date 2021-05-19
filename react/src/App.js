@@ -7,10 +7,10 @@ import useController from './hooks/useController'
 export const ControlContext = React.createContext()
 
 function App() {
-  const controller = useController('http://localhost:5000')
-  //console.log(controller.nameImageList())
   return (
-    <ControlContext.Provider value = {controller}>
+    <ControlContext.Provider 
+      value = {useController('http://localhost:5000')}
+    >
       <BrowserRouter>
         <div className="App">
           <Switch>
