@@ -1,4 +1,4 @@
-function dataReducer(state, action) {
+export default function dataReducer(state, action) {
     switch (action.type) {
       case 'ResetData':
         return {
@@ -24,5 +24,3 @@ function dataReducer(state, action) {
         throw new Error()
     }
 }
-
-export default dataReducer
