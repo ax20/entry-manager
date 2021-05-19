@@ -23,6 +23,7 @@ function Home(){
                     <form onSubmit={controller.handleImageSubmit}>
                         <input
                             type='file'
+                            className='custom-file-input'
                             data-key={index}
                             onChange={controller.handleImageChange}
                         />

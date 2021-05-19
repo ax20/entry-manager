@@ -24,8 +24,10 @@ function useImageApi(url) {
         }).then(function(result){
             console.log(result.data)
             setImage([...image, result.data])
-        }).catch(function(error){
-            console.log(error)
+            //const { filepath, filename, carname } = res.data
+            //setData({ filepath, filename, carname })
+        }).catch(function(err){
+            console.log(err)
         })
     }
     return [

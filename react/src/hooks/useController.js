@@ -90,6 +90,7 @@ function useController(url){
     e.preventDefault()
     const formData = new FormData()
     formData.append('file', file)
+    //console.log(nameList())
     if(Array.isArray(data) && data.length > 0 && index >= 0)
       insertImage(nameList()[index], formData)
     //console.log(image)
