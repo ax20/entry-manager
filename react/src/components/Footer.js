@@ -1,5 +1,5 @@
 import { Navbar } from 'react-bootstrap'
-function Footer() {
+export default function Footer() {
     return(
         <Navbar className="bg-primary text-white fixed-bottom">
             <p>
@@ -12,5 +12,3 @@ function Footer() {
         </Navbar>
     )
 }
-
-export default Footer

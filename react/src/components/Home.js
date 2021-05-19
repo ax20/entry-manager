@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Card } from 'react-bootstrap'
 import { ControlContext } from '../App'
-function Home(){
+export default function Home(){
     const controller = useContext(ControlContext)
     const nameImages = controller.nameImageList()
     return (
@@ -42,5 +42,3 @@ function Home(){
         </div>
     )
 }
-
-export default Home

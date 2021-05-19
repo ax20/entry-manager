@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap'
 import {ControlContext} from '../App'
-function InputModal() {
+export default function InputModal() {
     const controller = useContext(ControlContext)
     return (
         <Modal 
@@ -59,5 +59,3 @@ function InputModal() {
         </Modal>
     )
 }
-
-export default InputModal 

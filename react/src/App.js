@@ -5,8 +5,7 @@ import Main from './components/Main'
 import useController from './hooks/useController'
 
 export const ControlContext = React.createContext()
-
-function App() {
+export default function App() {
   return (
     <ControlContext.Provider 
       value = {useController('http://localhost:5000')}
@@ -21,5 +20,3 @@ function App() {
     </ControlContext.Provider>
   )
 }
-
-export default App

@@ -12,8 +12,7 @@ function useFormInput(initialValue) {
     setValue
   }
 }
-
-function useController(url){
+export default function useController(url){
   const carname = useFormInput('Nissan')
   const mileage = useFormInput(10000)
   const total = useFormInput(1000.0)
@@ -140,5 +139,3 @@ function useController(url){
     nameImageList
   }
 }
-
-export default useController

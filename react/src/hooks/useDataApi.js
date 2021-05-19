@@ -1,8 +1,7 @@
 import axios from 'axios'
 import { useEffect, useReducer } from 'react'
 import dataReducer from '../reducers/dataReducer'
-
-function useDataApi(url){
+export default function useDataApi(url){
     const [state, dispatch] = useReducer(dataReducer, {
         data: [], error: ''
     })
@@ -68,5 +67,3 @@ function useDataApi(url){
         }
     ]
 }
-
-export default useDataApi

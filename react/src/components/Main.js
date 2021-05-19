@@ -6,8 +6,7 @@ import Header from './Header'
 import Footer from './Footer'
 import Home from './Home'
 import SideBar from './SideBar'
-
-function Main() {
+export default function Main() {
     return(
         <Fragment>
             <Header/>
@@ -24,5 +23,3 @@ function Main() {
         </Fragment>
     )
 }
-
-export default Main

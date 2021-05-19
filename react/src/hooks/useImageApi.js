@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-function useImageApi(url) {
+export default function useImageApi(url) {
     const [image, setImage] = useState([])
     useEffect(() => {
         const fetchData = async () => {
@@ -35,5 +35,3 @@ function useImageApi(url) {
         insertImage
     ]      
 }
-
-export default useImageApi

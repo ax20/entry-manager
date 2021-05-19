@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Navbar } from 'react-bootstrap'
 import { ControlContext } from '../App'
 import '../css/Header.css'
-function Header() {
+export default function Header() {
     const controller = useContext(ControlContext)
     return(
         <Navbar className="bg-primary text-dark fixed-top">
@@ -13,5 +13,3 @@ function Header() {
         </Navbar>
     )
 }
-
-export default Header

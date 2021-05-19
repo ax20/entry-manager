@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
 import { Table,Button } from 'react-bootstrap'
 import { ControlContext } from '../App'
-function OutputTable() {
+export default function OutputTable() {
     const controller = useContext(ControlContext)
     const path = useLocation().pathname
     const matchNumber = controller.data.filter(v => ('/' + v.car_name === path)).length
@@ -46,5 +46,3 @@ function OutputTable() {
     )
     else return <Redirect to='/'/>
   }
-
-  export default OutputTable

@@ -2,7 +2,7 @@ import '../css/SideBar.css'
 import { ControlContext } from '../App'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-function SideBar() {
+export default function SideBar() {
     const controller = useContext(ControlContext)
     return(
         <div className="sidenav bg-primary">
@@ -15,5 +15,3 @@ function SideBar() {
         </div>
     )
 }
-
-export default SideBar
