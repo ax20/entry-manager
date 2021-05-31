@@ -1,48 +1,82 @@
 import { useContext } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
-import { Table,Button } from 'react-bootstrap'
+import {
+  Table,
+  TableContainer,
+  TableHead,
+  TableCell,
+  TableRow,
+  TableBody,
+  Paper,
+  Button
+} from '@material-ui/core'
 import { ControlContext } from '../App'
 export default function OutputTable() {
-    const controller = useContext(ControlContext)
-    const path = useLocation().pathname
-    const matchNumber = controller.data.filter(v => ('/' + v.car_name === path)).length
-    if(matchNumber!==0)
+  const controller = useContext(ControlContext)
+  const path = useLocation().pathname
+  const matchNumber = controller.data.filter(
+    (v) => '/' + v.car_name === path
+  ).length
+  if (matchNumber !== 0)
     return (
-      <div>
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Car Name</th>
-              <th>Mileage</th>
-              <th>Distance Between Entry</th>
-              <th>Txn Date</th>
-              <th>Txn Gas Total</th>
-              <th>Txn mpg</th>
-              <th>Txn Total</th>
-              <th>Delete</th>
-              <th>Update</th>
-            </tr>
-          </thead>
-          <tbody>
-          {controller.data.map((item,index) => 
-            path === '/' + item.car_name ? (
-            <tr key={index} style={{ width: '60rem' }}>
-              <td>{item.id}</td>
-              <td>{item.car_name}</td>
-              <td>{item.car_mileage}</td>
-              <td>{item.distance_between_entry}</td>
-              <td>{item.txn_date}</td>
-              <td>{item.txn_gas_total}</td>
-              <td>{item.txn_mpg}</td>
-              <td>{item.txn_total}</td>
-              <td><Button variant="danger" data-key={item.id} onClick={controller.handleDelete}>Delete</Button></td>
-              <td><Button variant="success" data-key={item.id} onClick={controller.handleUpdate}>Update</Button></td>
-            </tr>
-          ):null)} 
-          </tbody>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>#</TableCell>
+              <TableCell align="right">Car Name</TableCell>
+              <TableCell align="right">Mileage</TableCell>
+              <TableCell align="right">Distance Between Entry</TableCell>
+              <TableCell align="right">Txn Date</TableCell>
+              <TableCell align="right">Txn Gas Total</TableCell>
+              <TableCell align="right">Txn mpg</TableCell>
+              <TableCell align="right">Txn Total</TableCell>
+              <TableCell align="right">Delete</TableCell>
+              <TableCell align="right">Update</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {controller.data.map((item, index) =>
+              path === '/' + item.car_name ? (
+                <TableRow key={index} style={{ width: '60rem' }}>
+                  <TableCell component="th" scope="row">
+                    {item.id}
+                  </TableCell>
+                  <TableCell align="right">{item.car_name}</TableCell>
+                  <TableCell align="right">{item.car_mileage}</TableCell>
+                  <TableCell align="right">
+                    {item.distance_between_entry}
+                  </TableCell>
+                  <TableCell align="right">{item.txn_date}</TableCell>
+                  <TableCell align="right">{item.txn_gas_total}</TableCell>
+                  <TableCell align="right">{item.txn_mpg}</TableCell>
+                  <TableCell align="right">{item.txn_total}</TableCell>
+                  <TableCell align="right">
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      data-key={item.id}
+                      onClick={controller.handleDelete}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                  <TableCell align="right">
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      data-key={item.id}
+                      onClick={controller.handleUpdate}
+                    >
+                      Update
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ) : null
+            )}
+          </TableBody>
         </Table>
-      </div>
+      </TableContainer>
     )
-    else return <Redirect to='/'/>
-  }
+  else return <Redirect to="/" />
+}
