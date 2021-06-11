@@ -10,8 +10,7 @@ Method:  `POST`
     "car_mileage": 73444,
     "txn_total": 45.10,
     "txn_gas_total": 30.10
-},
-...
+}
 ```
 
 *NOTE: auth_token is the token from your settings file*
